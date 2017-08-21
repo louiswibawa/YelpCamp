@@ -16,7 +16,9 @@ var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     authRoutes          = require("./routes/index");
 
-mongoose.connect("mongodb://localhost/yelp_camp_v13", {useMongoClient: true});
+// mongoose.connect("mongodb://localhost/yelp_camp_v13", {useMongoClient: true});
+mongoose.connect("mongodb://louiswibawa:louiswibawa@ds023463.mlab.com:23463/louisyelpcamp");
+
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public")); // __dirname gives the absolute path from root
 app.set("view engine", "ejs");
