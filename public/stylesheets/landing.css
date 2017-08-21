@@ -1,0 +1,84 @@
+/* Refer to: https://github.com/nax3t/background-slider */
+body {
+  background-color: #000;    /* black color */
+}
+
+#landing-header {
+  z-index: 1;                /* z-axis(forward) of 1 */
+  position: relative;        /* static is the default position value. If you want to use z-index, we have to change it to relative */
+  text-align: center;        /* center horizontally */
+  padding-top: 40vh;         /* center verrtically (vertical height) */
+}
+
+#landing-header h1 {
+  color: #fff;               /* white color */   
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;               /* take entire page */
+  height: 100%;              /* take entire page */
+  top: 0;                    
+  left: 0;                   /* top left corner of page */
+  z-index: 0;                /* Put it behind the text in landing-header */
+  list-style: none;          /* remove bullet points */
+  margin: 0;                 /* no margin */
+  padding: 0;                /* no padding */
+}
+
+.slideshow li {     /* style list individually */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;            /* image takes entire space */
+  background-position: 50% 50%;      /* center images perfectly */
+  background-repeat: no-repeat;      /* images don't repeat vertically/horizontally */
+  opacity: 0;                        /* image starts faded out completely */
+  z-index: 0;                        /* images are behind text and button */
+  animation: imageAnimation 50s linear infinite;    /* fade images in and out, imageAnimation is the name below, linear means constant speed, loop infinitely */ 
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(http://i.imgur.com/K3mPv14.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+  animation-delay: 10s; /* each image fades in after 10 sec of the prev image */
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://i.imgur.com/emvhOnb.jpg);
+  animation-delay: 20s; /* each image fades in after 10 sec of the prev image */
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+  animation-delay: 30s; /* each image fades in after 10 sec of the prev image */
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+  animation-delay: 40s; /* each image fades in after 10 sec of the prev image */
+}
+
+@keyframes imageAnimation { 
+/* fade out-in-out */
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in; /* smooth transition */
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out; /* smooth transition */
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr(cdn above) */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}

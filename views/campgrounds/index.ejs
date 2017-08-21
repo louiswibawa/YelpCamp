@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <header class="jumbotron"> <!-- header is like div except there's a more meaningful meaning -->
+        <div class="container"> <!-- used to add spacing when resizing the window to smallest size (no effect with me, but with Colt) -->
+            <h1>Welcome to YelpCamp!</h1>
+            <p>View our hand-picked campgrounds from all over the world</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+            </p>
+        </div>
+    </header>
+    
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;"> <!-- The style determines the min amount of space needed to align the pics uniformly despite different heights -->
+        <!--<div class="col-lg-12">-->
+        <!--    <h3>Our Most Popular Campgrounds</h3>-->
+        <!--</div>-->
+        <% camps.forEach(function(camp){ %>
+            <div class="col-md-3 col-sm-6"> <!-- Every screen size has total of 12 units
+                                                 full-screen and med screen: 1 pic has size 3
+                                                 small screen: each pic has size 6
+                                                 x-small screen: default is 12 units -->
+                <div class="thumbnail">
+                    <img src="<%= camp.image %>"> <!-- the quotes have to be included because the JS will look like http://www.abs.com WITHOUT quotes -->
+                    <div class="caption">
+                        <h4><%= camp.name %></h4>
+                    </div>
+                    <p>
+                        <a href="/campgrounds/<%= camp._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>
